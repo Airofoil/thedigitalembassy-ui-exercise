@@ -1,0 +1,101 @@
+<div>
+    <div id="gallery" class="gallery">
+        <div id="gallery2" class="gallery2"></div>
+        <div class="upper">
+            <h2>Fusce dapibus tellus ac cursus commodo.<br>Duis mollis est non commodo luctus, nisi erat porttitor.</h2>
+            <button class="arrow-left" onclick="prev(12000)"></button>
+            <button class="arrow-right" onclick="next(12000)"></button><br>
+            <div class="footer">
+                <span class="divot" title="0"></span>
+                <span class="divot" title="1"></span>
+                <span class="divot" title="2"></span>
+                <span class="divot" title="3"></span>
+                <span class="divot" title="4"></span>
+                <span class="divot" title="5"></span>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="left">
+            <h1>Te quarrel sarker et mechan part techler.</h1>
+            <h3>Zel vou cart qzannler outtren t rgart kqandle.</h3>
+            <p>
+                Sess qiop weren barlv uaso homt e pescx. Morbi et enim imperdiet, commodo metus vitae, tincidunt dolor. 
+                Donec vel mollis turpis. Phasellus efficitur sem eu fringilla venenatis.
+            </p><p>
+                Morbi ante est, lacinia et purus id, convallis porta elit. Sed eget arcu mollis, tempus augue in, porta est. 
+                In id dolor fermentum, dictum lorem eget, molestie ligula. Nunc metus justo, vehicula id massa at, accumsan pellentesque justo.
+            </p>
+        </div>
+        <div class="right"><img src="images/img-1.png"></div>
+        <div class="left clearhalf">
+            <img src="images/img-2.png">
+        </div>
+        <div class="right clearhalf">
+            <h1>Quisque sollicitudin.</h1>
+            <h3>Curabitur eu dictum felis.</h3>
+            <p>
+                Nulla vitae magna hendrerit, sagittis dolor et, scelerisque risus. 
+                Nam sit amet imperdiet ex. Mauris egestas blandit nisl, a tincidunt risus pulvinar non. 
+                Ut commodo porta diam, in scelerisque mi consectetur id. 
+                Maecenas nibh libero, cursus sed metus mattis, eleifend fermentum nibh. 
+                In tortor neque, consequat ut mattis sed, sagittis a tortor. Nulla vel fermentum lacus, quis lacinia nunc.
+            </p>
+        </div>
+        <div class="clear">
+            <img src="images/img-5.png">
+            <h1>Hendrerit Suscipit: Odio neque ullamcorper lacus.</h1>
+            <h3>Ut commodo porta diam, <b>omnes grandinem in Airomathia</b>.</h3>
+        </div>
+    </section>
+
+    <script>
+
+        const images = [
+            "gallery-1.jpg",
+            "gallery-2.jpg",
+            "gallery-3.jpg",
+            "gallery-4.jpg",
+            "gallery-5.jpg",
+            "gallery-6.jpg"
+        ];
+
+        const divots = $('span.divot');
+        let index = 0
+        var toggle = true;
+        var start = next();
+
+        function set(i, d) {
+            $(divots).removeClass('selected');
+            clearTimeout(start); // Reset the next image counter
+            if (!$('#gallery')[0]) return; // If the gallery is not being shown, return
+            
+            $('#gallery2').css('opacity', toggle ? 0 : 1); console.log(i,images[i]); // Toggle the opacity of the second layer
+            setTimeout(() => toggle ? $('#gallery').css('background-image','url(images/' + images[i]) : $('#gallery2').css('background-image','url(images/' + images[i]), 1000); // Preset the next image one second after the fade animation
+
+            $(divots[i]).addClass('selected');
+
+            toggle = !toggle;
+            start = setTimeout(next, d); // Start the counter for the next image
+        }
+
+        function next(d=7000) {
+            index < 5 ? index++ : index = 0;
+            set(index, d);
+        }
+
+        function prev(d=7000) {
+            index > 0 ? index-- : index = 5;
+            set(index, d);
+        }
+
+        $(document).ready(function() {
+            $(divots).click((e) => {
+                index = parseInt(e.target.title)
+                set(index, 12000); // Upon clicking a divot span, set the gallery image to that of its title value
+            });
+        });
+
+    </script>
+</div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>DigitalEmbassy</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link href="css/stylesheet.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira Sans Condensed&display=swap" rel="stylesheet">
+
+    <script>
+
+        const margins = {
+            HOME: 46,
+            ABOUT: 38,
+            WORK: 30,
+            SERVICES: 22,
+            BLOG: 14,
+            CONTACT: 6,
+        }
+
+        $(document).ready(function() {
+            $('li.navlink a').click(function(e) {
+                e.preventDefault();
+
+                $('main').addClass('loading');
+                $('a.selected').removeClass('selected');
+                $(e.target).addClass('selected');
+
+                let page = e.target.href; console.log(page);
+                let home = $('li.navlink').first();
+                home.css('margin-left',margins[e.target.innerHTML]+'%');
+                margins[e.target.innerHTML] < 14 ? home.css('opacity','0') : home.css('opacity','1');
+
+                $('main').load(page).removeClass('loading');
+            });
+            $('main').load('home.html');
+        });
+
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navlinks">
+                <li class="navlink"><a href="home.html" class="curr">HOME</a></li>
+                <li class="navlink"><a href="about.html">ABOUT</a></li>
+                <li class="navlink"><a href="work.html">WORK</a></li>
+                <li class="navlink"><a href="services.html">SERVICES</a></li>
+                <li class="navlink"><a href="blog.html">BLOG</a></li>
+                <li class="navlink"><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main></main>
+    <footer>
+        <img src="assets/logo.svg">
+        <h3>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.<br>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</h3>
+        <p>
+            <a href="#" class="link">Careers</a> · 
+            <a href="#" class="link">Privacy Policy</a>
+        </p>
+        <nav>
+            <a href="#" class="social facebook"></a>
+            <a href="#" class="social twitter"></a>
+            <a href="#" class="social instagram"></a>
+            <a href="#" class="social youtube"></a>
+        </nav>
+    </footer>
+</body>
+</html>

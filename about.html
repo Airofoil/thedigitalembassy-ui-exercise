@@ -1,0 +1,43 @@
+<section>
+    <h1>OUR COMPANY BY NUMBERS</h1>
+    <div class="penta">
+        <div>
+            <h2 id="142" name="counter">0</h2><span class="bar"></span>
+            <p>Mauris congue leo lorem.</p>
+        </div>
+        <div>
+            <h2 id="367" name="counter">0</h2><span class="bar"></span>
+            <p>Mauris congue leo lorem.</p>
+        </div>
+        <div>
+            <h2 id="82" name="counter">0</h2><span class="bar"></span>
+            <p>Mauris congue leo lorem.</p>
+        </div>
+        <br><br>
+        <svg width="62" height="50" viewBox="0 0 62 50" fill="none" class="ia ib m">
+            <path fill="#ec5c5c" d="M61.8 0C45.63 4.36 35.4 20.33 35.4 34.65 35.4 44.19 41.33 50 49.3 50 56.68 50 62 44.2 62 37.14c0-6.85-4.5-12.04-10.44-12.87-1.63-.2-2.25-.83-2.25-2.28 0-8.3 4.91-17.22 12.69-21.58L61.8 0zM26.6 0C10.44 4.36 0 20.33 0 34.65 0 44.19 6.14 50 13.91 50c7.37 0 12.9-5.8 12.9-12.86 0-6.85-4.5-12.04-10.44-12.87-1.84-.2-2.25-.83-2.25-2.28 0-8.3 4.91-17.22 12.69-21.58L26.6 0z"></path>
+        </svg>
+        <h3 style="font-size: 3rem;">Lorem Ipsum.</h3>
+        <h4 style="padding-left: 40px;"> — L. P. Ipsum, probably</h4><br><br>
+        <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+
+        <img src="images/img-4.png">
+    </div>
+    <script>
+
+        function countup(time, num, header) {
+            const dt = time * 2 / num / num;
+            let i = 0;
+            function next() {
+                header.innerText = i++;
+                if (header.nextSibling) header.nextSibling.style.width = i + i + "px";
+                if (i <= num) setTimeout(next, i * dt * 2);
+            }
+            next();
+        }
+
+        let headers = $('h2[name="counter"]'); console.log(headers);
+        for (h in headers) countup(4000, headers[h].id, headers[h]);
+
+    </script>
+</section>

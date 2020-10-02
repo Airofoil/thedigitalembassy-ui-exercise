@@ -1,0 +1,16 @@
+<section>
+    <h1>OUR WORK</h1>
+    <div id="work" class="items"></div>
+</section>
+
+<script>
+    function randomColour() { return "#" + Math.floor(Math.random() * 10) + "" + Math.floor(Math.random() * 10) + "" + Math.floor(Math.random() * 10) }
+
+    $(document).ready(function() { console.log('hi');
+        $.getJSON("portfolio-work.js", function(result) {
+            $.each(result, function(i, result) {
+                $('#work').append("<div style='background: url(images/" + result.icon + ") no-repeat center/100%;'><h4>" + result.name + "</h4><p>" + result.info + "</p></div>");
+            });
+        });
+    })
+</script>
